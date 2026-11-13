@@ -1,4 +1,4 @@
-# CourseLoad — Project Overview
+# CourseLoad - Project Overview
 
 ## Problem statement
 Students often manage assignments, quizzes, reports and projects across different courses. When several deadlines fall on the same date, the workload can become difficult to notice until it is too late.
