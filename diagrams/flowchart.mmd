@@ -1,0 +1,12 @@
+flowchart TD
+  A([Start]) --> B[Load saved tasks]
+  B --> C[Show dashboard]
+  C --> D[Student adds or updates tasks]
+  D --> E[Save changes to localStorage]
+  E --> F[Group pending tasks by due date]
+  F --> G[Compare daily hours with chosen limit]
+  G --> H{Over limit?}
+  H -->|Yes| I[Display warning]
+  H -->|No| J[Display normal workload]
+  I --> C
+  J --> C

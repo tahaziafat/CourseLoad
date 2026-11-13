@@ -1,0 +1,16 @@
+flowchart LR
+  Student((Student))
+  subgraph CourseLoad
+    A[Add task]
+    B[View and filter tasks]
+    C[Edit or delete task]
+    D[Mark task complete]
+    E[Check workload by due date]
+    F[Set daily hour limit]
+  end
+  Student --> A
+  Student --> B
+  Student --> C
+  Student --> D
+  Student --> E
+  Student --> F

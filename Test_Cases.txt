@@ -1,0 +1,32 @@
+COURSELOAD MANUAL TEST CASES
+Run each test in the website and record the actual result. Do not mark a test as passed until you have tried it.
+
+TC-01 Add a task
+Steps: Add a task with title "DB Assignment", course "Database", a future due date and 3 estimated hours.
+Expected: The task appears in Upcoming tasks and Open tasks increases by 1.
+Actual result: __________________  Pass/Fail: ______
+
+TC-02 Refresh persistence
+Steps: Refresh the browser after adding TC-01.
+Expected: The task remains visible in the same browser.
+Actual result: __________________  Pass/Fail: ______
+
+TC-03 Complete a task
+Steps: Tick the checkbox beside the task.
+Expected: It is shown as completed and the open/completed counts update.
+Actual result: __________________  Pass/Fail: ______
+
+TC-04 Workload warning
+Steps: Add two pending tasks with the same due date, estimated at 4 hours each. Set daily limit to 6 hours.
+Expected: The workload for that date totals 8 hours and a warning appears.
+Actual result: __________________  Pass/Fail: ______
+
+TC-05 Edit and delete
+Steps: Edit a task title, save it, then delete the task.
+Expected: The edited title appears; after deletion the task is removed.
+Actual result: __________________  Pass/Fail: ______
+
+TC-06 Mobile layout
+Steps: Open the website and use browser responsive mode or a phone-sized window.
+Expected: Navigation, cards, tasks and form remain usable without horizontal page overflow.
+Actual result: __________________  Pass/Fail: ______

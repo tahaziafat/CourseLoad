@@ -1,0 +1,17 @@
+flowchart TD
+  A([Start]) --> B[Open CourseLoad]
+  B --> C{Choose action}
+  C -->|Add task| D[Enter title, course, date and hours]
+  D --> E[Save task in browser]
+  C -->|View tasks| F[Display task list]
+  C -->|Complete task| G[Update completion status]
+  C -->|Workload| H[Add pending hours by due date]
+  H --> I{Hours exceed daily limit?}
+  I -->|Yes| J[Show overload warning]
+  I -->|No| K[Show workload total]
+  E --> L[Refresh dashboard]
+  F --> L
+  G --> L
+  J --> L
+  K --> L
+  L --> C

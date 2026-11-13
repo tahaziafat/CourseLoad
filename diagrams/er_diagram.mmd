@@ -1,0 +1,14 @@
+erDiagram
+  STUDENT ||--o{ TASK : manages
+  STUDENT {
+    int student_id
+    int daily_hour_limit
+  }
+  TASK {
+    string task_id
+    string title
+    string course
+    date due_date
+    float estimated_hours
+    boolean completed
+  }

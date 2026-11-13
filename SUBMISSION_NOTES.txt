@@ -1,0 +1,6 @@
+SUBMISSION NOTES
+1. Assignment brief specifies groups of three. If you are submitting individually, obtain instructor approval first.
+2. Update the student name, registration number, class and instructor details in your final report/presentation.
+3. Execute all manual test cases and write down the real observed results.
+4. Explain that the HTML/CSS/JS website stores data locally in browser localStorage; it is not connected to the C++ console program.
+5. Mermaid diagram files are editable text sources. Render them to images/PDF if your instructor specifically requires diagram images.

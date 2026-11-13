@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CourseLoad helps students organise deadlines and spot overloaded days.">
+  <title>CourseLoad — Make room for what matters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">C</span><span>courseload<span class="brand-dot">.</span></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav>
+        <a class="nav-link active" href="#dashboard"><span>▦</span> Overview</a>
+        <a class="nav-link" href="#tasks"><span>☷</span> My tasks</a>
+        <a class="nav-link" href="#workload"><span>◷</span> Workload</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-note">
+          <div class="note-icon">✦</div>
+          <strong>Small steps add up.</strong>
+          <p>Plan your week before it plans you.</p>
+        </div>
+        <div class="profile"><div class="avatar">S</div><div><strong>Student workspace</strong><small>Personal planner</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div><div class="eyebrow" id="todayLabel">YOUR STUDY SPACE</div><h1>Good to see you<span class="wave"> ✦</span></h1><p class="subheading">A clearer view of what’s due, and when.</p></div>
+        <button class="primary-btn" id="addTaskTop">＋ Add a task</button>
+      </header>
+
+      <section class="stats-grid" aria-label="Task summary">
+        <article class="stat-card"><div class="stat-top"><span>Open tasks</span><span class="stat-icon lavender">☷</span></div><div class="stat-value" id="openCount">0</div><div class="stat-foot">Things still on your list</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Due today</span><span class="stat-icon peach">◷</span></div><div class="stat-value" id="todayCount">0</div><div class="stat-foot">Keep an eye on these</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Study hours planned</span><span class="stat-icon mint">⌁</span></div><div class="stat-value"><span id="totalHours">0</span><small> hrs</small></div><div class="stat-foot">Estimated across open tasks</div></article>
+        <article class="stat-card"><div class="stat-top"><span>Completed</span><span class="stat-icon blue">✓</span></div><div class="stat-value" id="doneCount">0</div><div class="stat-foot">You’re making progress</div></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel task-panel" id="tasks">
+          <div class="panel-heading"><div><div class="eyebrow">YOUR PRIORITIES</div><h2>Upcoming tasks</h2></div><div class="filter-wrap"><select id="taskFilter" aria-label="Filter tasks"><option value="all">All tasks</option><option value="pending">To do</option><option value="completed">Completed</option></select></div></div>
+          <div id="taskList" class="task-list"></div>
+          <div id="emptyState" class="empty-state"><div class="empty-art">✧</div><h3>Your list is looking peaceful.</h3><p>Add your first assignment, quiz or project to get started.</p><button class="text-btn" id="emptyAdd">＋ Add your first task</button></div>
+        </div>
+
+        <div class="right-column">
+          <div class="panel workload-panel" id="workload">
+            <div class="panel-heading"><div><div class="eyebrow">STAY AHEAD</div><h2>Daily workload</h2></div><span class="pill">By deadline</span></div>
+            <p class="panel-description">See how much work is landing on the same day.</p>
+            <label class="limit-label" for="dailyLimit">Your daily study-hour limit</label>
+            <div class="limit-control"><input type="number" id="dailyLimit" min="1" max="24" value="6"><span>hours / day</span><button id="saveLimit" class="small-btn">Save</button></div>
+            <div id="workloadList" class="workload-list"></div>
+          </div>
+          <div class="tip-card"><div class="tip-star">✦</div><div><strong>A little planning goes a long way.</strong><p>Break a big deadline into smaller sessions, and give yourself breathing room.</p></div></div>
+        </div>
+      </section>
+      <footer>CourseLoad <span>•</span> Your workload, made clearer.</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="taskModal" aria-hidden="true">
+    <form class="modal" id="taskForm">
+      <div class="modal-head"><div><div class="eyebrow">MAKE A PLAN</div><h2 id="modalTitle">Add a task</h2></div><button type="button" class="close-btn" id="closeModal" aria-label="Close">×</button></div>
+      <label>Task title<input id="taskTitle" maxlength="70" placeholder="e.g. Prepare database assignment" required></label>
+      <label>Course / subject<input id="taskCourse" maxlength="45" placeholder="e.g. Database Systems" required></label>
+      <div class="form-row"><label>Due date<input id="taskDate" type="date" required></label><label>Estimated hours<input id="taskHours" type="number" min="0.5" max="100" step="0.5" placeholder="e.g. 3" required></label></div>
+      <div class="form-actions"><button type="button" class="secondary-btn" id="cancelModal">Cancel</button><button type="submit" class="primary-btn">Save task <span>→</span></button></div>
+      <p class="form-hint">Your tasks are saved in this browser on this device.</p>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
