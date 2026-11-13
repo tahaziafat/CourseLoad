@@ -4,3 +4,40 @@
 @media(max-width:1050px){.main-content{padding:35px 25px}.sidebar{width:215px}.stats-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.app-shell{display:block}.sidebar{width:100%;height:auto;padding:14px 17px;border-right:0;border-bottom:1px solid var(--line);display:flex;flex-direction:row;align-items:center;justify-content:space-between}.brand{margin:0}.workspace-label,.sidebar-bottom{display:none}.sidebar nav{display:flex;gap:4px}.nav-link{padding:9px 10px;margin:0;font-size:10px}.nav-link span{font-size:13px;width:auto}.main-content{padding:27px 16px 20px}.topbar{align-items:flex-start;gap:10px}.topbar h1{font-size:23px}.topbar .primary-btn{padding:10px 12px;font-size:10px;white-space:nowrap;margin-top:8px}.subheading{font-size:11px}.stats-grid{gap:9px}.stat-card{padding:13px}.stat-value{font-size:23px}.content-grid{grid-template-columns:1fr}.panel{padding:17px}.task-date{font-size:9px}.task-hours{display:none}.right-column{grid-row:auto}.form-row{grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.brand{font-size:17px}.brand-mark{width:30px;height:30px}.nav-link{gap:5px;padding:8px 7px}.topbar h1{font-size:20px}.stats-grid{grid-template-columns:repeat(2,1fr)}.task-item{gap:8px}.task-title{font-size:11px}}
+
+
+/* Separate application views: the sidebar stays fixed while the main surface changes. */
+.main-content.view-tasks .stats-grid,
+.main-content.view-workload .stats-grid {
+  display: none;
+}
+.main-content.view-tasks .content-grid,
+.main-content.view-workload .content-grid {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+.main-content.view-tasks .right-column,
+.main-content.view-workload .task-panel {
+  display: none;
+}
+.main-content.view-tasks .task-panel {
+  width: 100%;
+  min-height: 420px;
+}
+.main-content.view-workload .right-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+}
+.main-content.view-workload .workload-panel {
+  min-height: 360px;
+}
+.nav-link[aria-current="page"] {
+  font-weight: 700;
+}
+@media (max-width: 760px) {
+  .main-content.view-tasks .content-grid,
+  .main-content.view-workload .content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

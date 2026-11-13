@@ -40,6 +40,63 @@ function closeModal() {
   $("taskForm").reset();
   editingId = null;
 }
+
+const pageCopy = {
+  overview: {
+    title: 'Good to see you<span class="wave"> ✦</span>',
+    subtitle: 'A clearer view of what’s due, and when.',
+    eyebrow: 'YOUR STUDY SPACE'
+  },
+  tasks: {
+    title: 'My tasks',
+    subtitle: 'Keep track of every assignment, quiz and project.',
+    eyebrow: 'TASK MANAGEMENT'
+  },
+  workload: {
+    title: 'Your workload',
+    subtitle: 'See which deadlines are manageable and which days need attention.',
+    eyebrow: 'WORKLOAD ANALYSIS'
+  }
+};
+
+function setView(view, updateAddress = true) {
+  if (!pageCopy[view]) view = 'overview';
+  const main = document.querySelector('.main-content');
+  main.classList.remove('view-overview', 'view-tasks', 'view-workload');
+  main.classList.add(`view-${view}`);
+
+  document.querySelectorAll('.nav-link[data-view]').forEach(link => {
+    const active = link.dataset.view === view;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+
+  $('pageTitle').innerHTML = pageCopy[view].title;
+  $('pageSubtitle').textContent = pageCopy[view].subtitle;
+  $('todayLabel').textContent = pageCopy[view].eyebrow;
+
+  if (updateAddress && location.hash !== `#${view === 'overview' ? 'dashboard' : view}`) {
+    history.pushState({ view }, '', `#${view === 'overview' ? 'dashboard' : view}`);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.nav-link[data-view]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    setView(link.dataset.view);
+  });
+});
+window.addEventListener('popstate', () => {
+  const hash = location.hash.replace('#', '');
+  setView(hash === 'tasks' || hash === 'workload' ? hash : 'overview', false);
+});
+window.addEventListener('hashchange', () => {
+  const hash = location.hash.replace('#', '');
+  setView(hash === 'tasks' || hash === 'workload' ? hash : 'overview', false);
+});
+
 function render() {
   const pending = tasks.filter(t => !t.completed);
   const dueToday = pending.filter(t => t.date === localDate(today));
@@ -135,3 +192,5 @@ $("saveLimit").addEventListener("click", () => {
 });
 $("todayLabel").textContent = today.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" }).toUpperCase();
 render();
+const initialHash = location.hash.replace('#', '');
+setView(initialHash === 'tasks' || initialHash === 'workload' ? initialHash : 'overview', false);

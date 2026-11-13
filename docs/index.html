@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CourseLoad helps students organise deadlines and spot overloaded days.">
-  <title>CourseLoad - Make room for what matters</title>
+  <title>CourseLoad - Make room for what matters!</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
       <a class="brand" href="#"><span class="brand-mark">C</span><span>CourseLoad<span class="brand-dot">.</span></span></a>
       <div class="workspace-label">WORKSPACE</div>
       <nav>
-        <a class="nav-link active" href="#dashboard"><span>▦</span> Overview</a>
-        <a class="nav-link" href="#tasks"><span>☷</span> My tasks</a>
-        <a class="nav-link" href="#workload"><span>◷</span> Workload</a>
+        <a class="nav-link active" href="#dashboard" data-view="overview"><span>▦</span> Overview</a>
+        <a class="nav-link" href="#tasks" data-view="tasks"><span>☷</span> My tasks</a>
+        <a class="nav-link" href="#workload" data-view="workload"><span>◷</span> Workload</a>
       </nav>
       <div class="sidebar-bottom">
         <div class="side-note">
@@ -29,7 +29,7 @@
 
     <main class="main-content" id="dashboard">
       <header class="topbar">
-        <div><div class="eyebrow" id="todayLabel">YOUR STUDY SPACE</div><h1>Good to see you<span class="wave"> ✦</span></h1><p class="subheading">A clearer view of what’s due, and when.</p></div>
+        <div><div class="eyebrow" id="todayLabel">YOUR STUDY SPACE</div><h1 id="pageTitle">Good to see you<span class="wave"> ✦</span></h1><p class="subheading" id="pageSubtitle">A clearer view of what’s due, and when.</p></div>
         <button class="primary-btn" id="addTaskTop">＋ Add a task</button>
       </header>
 
